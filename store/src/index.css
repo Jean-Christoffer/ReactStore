@@ -10,10 +10,17 @@ html{
 }
 body{
   min-height: 100vh;
+  background: white;
+}
+body.dark{
+  color: white;
+  background: black;
 }
 header{
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  padding: 10px;
 }
 ul{
   display: flex;
@@ -28,4 +35,137 @@ a{
 }
 a.active{
   font-weight: bold;
+}
+nav{
+  display: flex;
+}
+.themeSwitcher{
+  background: none;
+  border: none;
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+
+}
+button{
+  cursor: pointer;
+}
+.btn.light{
+  color: black;
+}
+.btn.dark{
+  color: white;
+}
+.products-row{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  justify-content: center;
+  margin:100px auto;
+  gap:30px;
+  row-gap: 50px;
+}
+.img-container{
+  width: 200px;
+  height: 150px;
+  margin-bottom: 10px;
+  align-self: center;
+  justify-self: center;
+  
+}
+img{
+  max-width: 100%;
+  display: block;
+  max-height: 100%
+}
+.product-title{
+  font-size: 14px;
+
+}
+.product-card{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  align-items: center;
+  justify-content: center;
+
+}
+.product-card a{
+  padding: 10px 30px;
+  background: rgb(98, 98, 172);
+  border-radius: 15px;
+
+}
+.price-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  margin-top: 15px;
+
+}
+.rating{
+  align-self: flex-start;
+  margin-top: 10px;
+}
+.content-block{
+  margin-top: auto;
+}
+.select-container{
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+  margin: 10px;
+}
+
+.spinner {
+  animation: rotator 1.4s linear infinite;
+  position: fixed;
+}
+
+@keyframes rotator {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(270deg);
+  }
+}
+.path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+}
+
+@keyframes colors {
+  0% {
+      stroke: #4285F4;
+  }
+  25% {
+      stroke: #DE3E35;
+  }
+  50% {
+      stroke: #F7C223;
+  }
+  75% {
+      stroke: #1B9A59;
+  }
+  100% {
+      stroke: #4285F4;
+  }
+}
+@keyframes dash {
+  0% {
+      stroke-dashoffset: 187;
+  }
+  50% {
+      stroke-dashoffset: 46.75;
+      transform: rotate(135deg);
+  }
+  100% {
+      stroke-dashoffset: 187;
+      transform: rotate(450deg);
+  }
 }

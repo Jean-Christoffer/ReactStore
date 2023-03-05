@@ -2,8 +2,8 @@
 import Nav from './components/NavBar.jsx'
 import {BrowserRouter,Route,Routes} from "react-router-dom";
 import About from './components/About.jsx'
-import Cart from './components/About.jsx'
-import Products from './components/About.jsx'
+import Cart from './components/Cart.jsx'
+import Products from './components/Products.jsx'
 import Home from './components/Home.jsx'
 function App() {
 
