@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react'
 import { Outlet } from "react-router-dom";
 import Product from './Product.jsx'
 import Loader from './Loader.jsx'
-export default function Products(){
+export default function Products(props){
+    const {handleAddToCart, cart} = props
     const [products, setProducts] = useState([])
     const [category, setCategory] = useState('electronics')
     const [isLoading, setIsLoading] = useState(false)
@@ -36,7 +37,7 @@ export default function Products(){
         </div>  
         <div className='products-row'>
         {isLoading && <Loader/>}
-        {products && products.map(product => <Product key = {product.id} details = {product}/>)}
+        {products && products.map(product => <Product key = {product.id} handleAddToCart={handleAddToCart} details = {product} cart={cart}/>)}
         </div>
             
         </>

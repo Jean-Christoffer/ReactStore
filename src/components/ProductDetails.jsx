@@ -2,7 +2,8 @@ import { useParams } from "react-router-dom";
 import { useEffect,useState } from "react";
 import Loader from "./Loader.jsx";
 import Button from './Button.jsx'
-export default function ProductDetails(){
+export default function ProductDetails(props){
+    const {handleAddToCart, cart} = props
     const params = useParams()
     const [isLoading, setIsLoading] = useState(false)
     const [product ,setProduct] = useState({})
@@ -30,7 +31,7 @@ export default function ProductDetails(){
                 <p className="description">{product.description}</p>
                 <div className='price-container'>
                     <p>$ {product.price}</p>
-                    <Button extraClass = {'add-to-cart-btn'}>Add to cart</Button>
+                    <Button extraClass = {'add-to-cart-btn'} cart={cart} onClick={handleAddToCart}>Add to cart</Button>
                 </div>
             </div>
         </div>

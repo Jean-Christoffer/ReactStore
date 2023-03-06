@@ -11,6 +11,6 @@ export default function Button(props){
 
     
     return (
-        <button className={classes} {...rest}>{children}</button>
+        <button  className={classes} {...rest}>{children}</button>
     )
 }

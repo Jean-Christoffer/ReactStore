@@ -4,11 +4,16 @@ import { MdDarkMode, MdOutlineLightMode } from 'react-icons/md';
 import Button from './Button.jsx'
 
 export default function NavBar(props){
+    const {cart} = props
     const [isDark, setIsDark] = useState(false)
 
     useEffect(()=>{
         document.body.classList.toggle('dark')
     },[isDark])
+
+    const totalItems = cart.reduce((a,b)=> {
+        return a + (b.quantity)
+    },0)
 
     return(
         <>
@@ -19,7 +24,7 @@ export default function NavBar(props){
                         <li><NavLink to='/' className={({ isActive })=> isActive ? 'active' : '' }>Home</NavLink></li>
                         <li><NavLink to='/products' className={({ isActive })=> isActive ? 'active' : '' }>Products</NavLink></li>
                         <li><NavLink to='/about'  className={({ isActive })=> isActive ? 'active' : '' }>About</NavLink></li>
-                        <li><NavLink to='/cart'className={({ isActive })=> isActive ? 'active' : '' }>Cart</NavLink></li>
+                        <li><NavLink to='/cart'className={({ isActive })=> isActive ? 'active' : '' }>Cart({totalItems})</NavLink></li>
                     </ul>
                 <Button
                  onClick={()=>{setIsDark(!isDark)}}

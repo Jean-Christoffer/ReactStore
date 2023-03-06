@@ -225,3 +225,30 @@ article h1{
 .cta-container{
   justify-self: center;
 }
+.cart-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cart-box{
+  border: 1px solid black;
+}
+.cart-row, .cart-item-row{
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  padding: 10px;
+  background: #f5f5f5;
+  align-items: center;
+}
+.cart-container{
+  margin-top: 50px;
+}
+.cart-image{
+  width: 40px;
+
+}
+.cart-row{
+  margin-bottom: 10px;
+}
+  
