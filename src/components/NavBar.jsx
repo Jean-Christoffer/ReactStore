@@ -28,7 +28,7 @@ export default function NavBar(props){
                     </ul>
                 <Button
                  onClick={()=>{setIsDark(!isDark)}}
-                 themeSwitcher = 'themeSwitcher'
+                 themeSwitcher
                  extraClass = {isDark ? 'dark' : 'light'}
                  >{isDark ? <MdOutlineLightMode/>  : <MdDarkMode/>}</Button>
                 </nav>

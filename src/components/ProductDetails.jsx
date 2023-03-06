@@ -7,6 +7,7 @@ export default function ProductDetails(props){
     const params = useParams()
     const [isLoading, setIsLoading] = useState(false)
     const [product ,setProduct] = useState({})
+
     useEffect(()=>{
         setIsLoading(true)
         fetch(`https://fakestoreapi.com/products/${params.id}`)
@@ -18,6 +19,7 @@ export default function ProductDetails(props){
             .finally(()=> setIsLoading(false))
     },[])
 
+    console.log(product)
     return(
     <>
     <div className='products-row'>
@@ -31,7 +33,7 @@ export default function ProductDetails(props){
                 <p className="description">{product.description}</p>
                 <div className='price-container'>
                     <p>$ {product.price}</p>
-                    <Button extraClass = {'add-to-cart-btn'} cart={cart} onClick={handleAddToCart}>Add to cart</Button>
+                    <Button addToCart     onClick={()=> handleAddToCart(product)} >Add to cart</Button>
                 </div>
             </div>
         </div>
