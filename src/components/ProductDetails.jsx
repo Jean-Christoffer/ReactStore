@@ -1,8 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect,useState } from "react";
 import Loader from "./Loader.jsx";
-import {Button} from '@mui/material'
-
+import {Button, Typography,Paper,Box} from '@mui/material'
 export default function ProductDetails(props){
     const {handleAddToCart, cart} = props
     const params = useParams()
@@ -20,25 +19,28 @@ export default function ProductDetails(props){
             .finally(()=> setIsLoading(false))
     },[])
 
-    console.log(product)
+
     return(
     <>
-    <div className='products-row'>
     {isLoading && <Loader/>}
-    <div className='product-card' key = {product.id}>
-               <div className='img-container'>
-                    <img src={product.image} />
-                </div>  
-            <div className='content-block'>
-                <h2 className='product-title'>{product.title}</h2>
-                <p className="description">{product.description}</p>
-                <div className='price-container'>
-                    <p>$ {product.price}</p>
-                    <Button   variant="contained"   onClick={()=> handleAddToCart(product)} >Add to cart</Button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <Paper elevation={3} key = {product.id} sx={{ maxWidth: 600, margin:'auto' }}>
+
+        <Box padding={1} sx={{  display:'flex', justifyContent:'center', height:200 }}>      
+            <img src={product.image} />
+        </Box> 
+
+            <Box paddingX={1}>  
+                <Typography  sx={{fontWeight: 'bold'}} variant="body1" component='h2'>{product.title}</Typography>
+            </Box>
+            <Box paddingX={1}>  
+                <Typography sx={{ 'line-height':25, 'margin-top':10 }}   variant="body1" component='p'>{product.description}</Typography>
+            </Box>         
+
+            <Box padding={1} sx={{  display:'flex', alignItems:'center', justifyContent:'space-around' }}>
+                <Typography  component='p' sx={{fontWeight: 'bold'}}> ${product.price}</Typography>
+                <Button   variant="contained"   onClick={()=> handleAddToCart(product)} >Add to cart</Button>
+            </Box>       
+        </Paper>
     </>
     )
 }

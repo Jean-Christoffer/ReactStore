@@ -31,7 +31,7 @@ export default function Products(props){
 
     return(
         <>
-        <Box sx={{ maxWidth: 200 }}>
+        <Box sx={{ maxWidth: 200, 'margin-top':20 }}>
         <FormControl fullWidth>
          <InputLabel id="category">Category</InputLabel>
         <Select

@@ -40,8 +40,8 @@ function handleAddToCart(newItem){
   return (
     <>
     <BrowserRouter>
+    <Nav cart={cart}/>
       <Container>
-        <Nav cart={cart}/>
         <Routes>
           <Route path='/' element={<Home/>}></Route>
           <Route path='/products' element={<Products handleAddToCart={handleAddToCart} cart = {cart}/>}></Route>
