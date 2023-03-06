@@ -1,7 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import { Outlet } from "react-router-dom";
 import Product from './Product.jsx'
 import Loader from './Loader.jsx'
+import Grid2 from '@mui/material/Unstable_Grid2';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem'
+import Box from '@mui/material/Box';
+import FormControl from '@mui/material/FormControl';
 export default function Products(props){
     const {handleAddToCart, cart} = props
     const [products, setProducts] = useState([])
@@ -26,19 +31,27 @@ export default function Products(props){
 
     return(
         <>
-        <div className='select-container'>
-            <label htmlFor={'category'}> Select a category </label>
-                <select onChange={toggleCategory} id={'category'} name={'category'} value={category}>
-                    <option value={'jewelery'}>Jewelery</option>
-                    <option value={"men's clothing"}>Men's clothing</option>
-                    <option value={"women's clothing"}>Women's clothing</option>
-                    <option value={'electronics'}>Electronics</option>
-                </select>  
-        </div>  
-        <div className='products-row'>
-        {isLoading && <Loader/>}
-        {products && products.map(product => <Product key = {product.id} handleAddToCart={handleAddToCart} details = {product} cart={cart}/>)}
-        </div>
+        <Box sx={{ maxWidth: 200 }}>
+        <FormControl fullWidth>
+         <InputLabel id="category">Category</InputLabel>
+        <Select
+          labelId="category"
+          id="category"
+          value={category}
+          label="Category"
+          onChange={toggleCategory}
+        >
+          <MenuItem value={'jewelery'}>Jewelery</MenuItem>
+          <MenuItem value={"men's clothing"}>Men's clothing</MenuItem>
+          <MenuItem value={"women's clothing"}>Women's clothing</MenuItem>
+          <MenuItem value={"electronics"}>Electronics</MenuItem>
+        </Select>
+        </FormControl>
+        </Box>  
+        <Grid2 container  spacing={5}>
+            {isLoading && <Loader/>}
+            {products && products.map(product => <Product key = {product.id} handleAddToCart={handleAddToCart} details = {product} cart={cart}/>)}
+        </Grid2>
             
         </>
     )

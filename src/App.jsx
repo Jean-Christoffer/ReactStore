@@ -8,6 +8,7 @@ import Products from './components/Products.jsx'
 import Home from './components/Home.jsx'
 import ProductDetails from './components/ProductDetails.jsx'
 import Footer from './components/Footer.jsx'
+import Container from '@mui/material/Container';
 function App() {
 const  [cart,setCart] = useState([])
 
@@ -39,17 +40,17 @@ function handleAddToCart(newItem){
   return (
     <>
     <BrowserRouter>
-    <div className="content-container">
-      <Nav cart={cart}/>
-      <Routes>
-        <Route path='/' element={<Home/>}></Route>
-        <Route path='/products' element={<Products handleAddToCart={handleAddToCart} cart = {cart}/>}></Route>
-        <Route path='/products/:id' element={<ProductDetails handleAddToCart={handleAddToCart} cart={cart}/>}></Route>
-        <Route path='/about' element={<About/>}></Route>
-        <Route path='/cart' element={<Cart cart={cart}/>}></Route>
-      </Routes>
-      </div>
-      <Footer/>
+      <Container>
+        <Nav cart={cart}/>
+        <Routes>
+          <Route path='/' element={<Home/>}></Route>
+          <Route path='/products' element={<Products handleAddToCart={handleAddToCart} cart = {cart}/>}></Route>
+          <Route path='/products/:id' element={<ProductDetails handleAddToCart={handleAddToCart} cart={cart}/>}></Route>
+          <Route path='/about' element={<About/>}></Route>
+          <Route path='/cart' element={<Cart cart={cart}/>}></Route>
+        </Routes>
+        <Footer/>
+      </Container>
       </BrowserRouter>
     </>
   )

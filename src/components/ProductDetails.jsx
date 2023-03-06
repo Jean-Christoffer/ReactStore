@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect,useState } from "react";
 import Loader from "./Loader.jsx";
-import Button from './Button.jsx'
+import {Button} from '@mui/material'
+
 export default function ProductDetails(props){
     const {handleAddToCart, cart} = props
     const params = useParams()
@@ -33,7 +34,7 @@ export default function ProductDetails(props){
                 <p className="description">{product.description}</p>
                 <div className='price-container'>
                     <p>$ {product.price}</p>
-                    <Button addToCart     onClick={()=> handleAddToCart(product)} >Add to cart</Button>
+                    <Button   variant="contained"   onClick={()=> handleAddToCart(product)} >Add to cart</Button>
                 </div>
             </div>
         </div>

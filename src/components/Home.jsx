@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom'
+import {Button} from '@mui/material'
 export default function Home(){
     return(
     <>
@@ -9,6 +10,7 @@ export default function Home(){
         </article>
         <div className='cta-container'>
             <Link className='cta' to='/products'>Shop now</Link>
+            
         </div>
     </div>
 
