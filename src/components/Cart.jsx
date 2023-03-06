@@ -22,7 +22,8 @@ export default function Cart(props){
             <p>${product.quantity * product.price}</p>
              </div> )}
        <div className='total'>
-        {subTotal > 0 && <p>Total: ${subTotal}</p>}
+        {subTotal > 0 && <p className='sub-total'>Total: ${subTotal}</p>}
+        {subTotal > 0 && <Button>checkout</Button>}
         </div>      
     </div>
     </>

@@ -240,9 +240,17 @@ article h1{
   padding: 10px;
   background: #f5f5f5;
   align-items: center;
+  text-align: center;
+
 }
+.cart-item-row p {
+  width: 60px;
+  text-align: right;
+}
+
 .cart-container{
   margin-top: 50px;
+  
 }
 .cart-image{
   width: 40px;
@@ -250,5 +258,15 @@ article h1{
 }
 .cart-row{
   margin-bottom: 10px;
+  
+}
+.sub-total{
+ font-weight: bold;
+}
+.total{
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  margin-top: 20px;
 }
   
