@@ -23,13 +23,13 @@ export default function Cart(props){
             <Box className='cart-image'><img src = {product.image}/></Box>
             <Typography sx={{ width:'70px', textAlign:'center' }}>${product.price}</Typography>
             <Typography sx={{ width:'70px', textAlign:'center' }}>{product.quantity}</Typography>
-            <Typography sx={{ width:'70px',  textAlign:'center'}}>${product.quantity * product.price}</Typography>
+            <Typography sx={{ width:'70px',  textAlign:'center'}}>${product.quantity.toFixed(2) * product.price.toFixed(2)}</Typography>
             <Button variant="text" size="small" color="error" onClick={() => props.removeItem(product)} ><DeleteIcon /></Button>
              </Paper> )}
        <Box className='total' sx={{ display:'flex', justifyContent:'space-between', padding:'10px', alignItems:'center'}}>
         {subTotal > 0 && <Typography sx={{fontWeight: 'bold'}} >Total: ${subTotal.toFixed(2)}</Typography>}
-        {subTotal > 0 && <Button variant="contained" >checkout</Button>}
-        {cart.length > 0 && <Button size="small" variant="contained" color="error" onClick={props.clearCart} >Clear</Button>}
+        {subTotal > 0 && <Button variant="contained" sx={{ margin:'5px'}} >checkout</Button>}
+        {cart.length > 0 && <Button size="small" variant="contained" color="error" onClick={props.clearCart} sx={{ margin:'5px'}} >Clear</Button>}
         </Box>      
 
     </Container>
