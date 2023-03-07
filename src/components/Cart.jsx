@@ -24,7 +24,7 @@ export default function Cart(props){
             <Typography sx={{ width:'70px', textAlign:'center' }}>${product.price}</Typography>
             <Typography sx={{ width:'70px', textAlign:'center' }}>{product.quantity}</Typography>
             <Typography sx={{ width:'70px',  textAlign:'center'}}>${product.quantity * product.price}</Typography>
-            <Button variant="contained" size="small" color="error" onClick={() => props.removeItem(product.id)} ><DeleteIcon /></Button>
+            <Button variant="text" size="small" color="error" onClick={() => props.removeItem(product.id)} ><DeleteIcon /></Button>
              </Paper> )}
        <Box className='total' sx={{ display:'flex', justifyContent:'space-between', padding:'10px', alignItems:'center'}}>
         {subTotal > 0 && <Typography sx={{fontWeight: 'bold'}} >Total: ${subTotal.toFixed(2)}</Typography>}
