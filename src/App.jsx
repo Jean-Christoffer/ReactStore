@@ -62,11 +62,23 @@ function handleAddToCart(newItem){
  function clearCart(){
     setCart([])
  }
-function removeItem(id){
-  setCart(cart.filter(products => {
-    return products.id !== id
-  }))
+
+function removeItem(item){
+  const itemExists = cart.find(product => product.id === item.id)
+  if(itemExists){
+    const updatedCart = cart.map(product => {
+      if(product.id === item.id){
+        return{
+          ...product,
+          quantity:product.quantity  -1
+        };
+      }
+      return product
+    }).filter(product => product.quantity > 0)
+    setCart(updatedCart)
+  }
 }
+
   return (
     <>
     
