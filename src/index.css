@@ -11,6 +11,7 @@ img{
 .cart-image{
   width: 50px;
 }
+
 .spinner {
   animation: rotator 1.4s linear infinite;
   position: fixed;
