@@ -55,7 +55,7 @@ export default function Products(props){
         </Box>  
         <Grid2 container  spacing={5} columns={mobile ? 1 : tablet ? 8 : 12} sx={{ marginBottom:1 }}>
             {isLoading && <Loader/>}
-            {products && products.map(product => <Product key = {product.id} handleAddToCart={handleAddToCart} details = {product} cart={cart}/>)}
+            {products && products.map(product => <Product key = {product.id}  handleAddToCart={handleAddToCart} details = {product} cart={cart}/>)}
         </Grid2>
             
         </>

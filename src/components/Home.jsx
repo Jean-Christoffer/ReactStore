@@ -8,7 +8,7 @@ export default function Home(){
     return(
     <>  
         <Container   sx={{ display:'flex',flexDirection:'column', justifyContent:'center', marginTop:'100px' }}>
-            <Typography variant={mobile ? 'h4' : tablet ? 'h2' : 'h1'} component='h1' sx={{ textAlign:'center' }} >Welcome to The store </Typography>
+            <Typography variant={mobile ? 'h4' : tablet ? 'h2' : 'h1'} component='h1' sx={{ textAlign:'center' }} >Welcome to the store </Typography>
                 <Box maxWidth="100vw">
                     <img src='/store_9.jpg'></img>
                 </Box>  

@@ -59,7 +59,14 @@ function handleAddToCart(newItem){
     ])
   }
 }
-
+ function clearCart(){
+    setCart([])
+ }
+function removeItem(id){
+  setCart(cart.filter(products => {
+    return products.id !== id
+  }))
+}
   return (
     <>
     
@@ -73,7 +80,7 @@ function handleAddToCart(newItem){
                 <Route path='/products' element={<Products handleAddToCart={handleAddToCart} cart = {cart}/>}></Route>
                 <Route path='/products/:id' element={<ProductDetails handleAddToCart={handleAddToCart} cart={cart}/>}></Route>
                 <Route path='/about' element={<About/>}></Route>
-                <Route path='/cart' element={<Cart cart={cart}/>}></Route>
+                <Route path='/cart' element={<Cart cart={cart} clearCart={clearCart} removeItem={removeItem}/>}></Route>
               </Routes>
             </Container>
             <Footer/>
