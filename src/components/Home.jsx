@@ -9,7 +9,7 @@ export default function Home(){
             <img src='/store_9.jpg'></img>
         </Box>  
     
-        <Box sx={{ display:'flex', justifyContent:'center' }}>
+        <Box sx={{ display:'flex', justifyContent:'center', marginTop:'50px' }}>
             <Link className='cta' to='/products'>SHOP NOW</Link>   
         </Box>
  

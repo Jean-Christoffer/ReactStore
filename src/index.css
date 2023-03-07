@@ -8,6 +8,9 @@ img{
   max-width: 100%;
   max-height: 100%;
 }
+.cart-image{
+  width: 50px;
+}
 .spinner {
   animation: rotator 1.4s linear infinite;
   position: fixed;
