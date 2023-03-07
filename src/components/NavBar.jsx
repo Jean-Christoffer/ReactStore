@@ -1,51 +1,30 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {NavLink, Link} from 'react-router-dom'
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
+import {Box,Container,Button} from '@mui/material';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-
-
-/*export default function NavBar(props){
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import NightlightRoundIcon from '@mui/icons-material/NightlightRound';
+function NavBar(props) {
     const {cart} = props
 
     const totalItems = cart.reduce((a,b)=> {
-        return a + (b.quantity)
-    },0)
+      return a + (b.quantity)
+  },0)
 
-    return(
-        <>
-            <header>
-                <Link to='/'><h1>The store</h1></Link>
-                <nav>
-                    <ul>
-                        <li><NavLink to='/' className={({ isActive })=> isActive ? 'active' : '' }>Home</NavLink></li>
-                        <li><NavLink to='/products' className={({ isActive })=> isActive ? 'active' : '' }>Products</NavLink></li>
-                        <li><NavLink to='/about'  className={({ isActive })=> isActive ? 'active' : '' }>About</NavLink></li>
-                        <li><NavLink to='/cart'className={({ isActive })=> isActive ? 'active' : '' }>Cart({totalItems})</NavLink></li>
-                    </ul>
-                </nav>
-            </header>
-        </>
-    )
-}
-*/
+  const pages = [
+    { name: 'Home', route: '', properties:'' },
+    { name: 'Product', route: 'products', properties:'' },
+    { name: 'About', route: 'about', properties:'' },
+    { name: `Cart(${totalItems})`, route: 'cart', properties:cart }
+    
+  ];
 
-const pages = ['products', 'about', 'cart',''];
-
-
-function NavBar(props) {
-    const {cart} = props
-  const [anchorElNav, setAnchorElNav] = React.useState(null)
+  const [anchorElNav, setAnchorElNav] = useState(null)
 
   const handleOpenNavMenu = ( event) => {
     setAnchorElNav(event.currentTarget);
@@ -106,17 +85,25 @@ function NavBar(props) {
               sx={{
                 display: { xs: 'block', md: 'none' },
               }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
-                    <Link to={`/${page}`} style={{ textDecoration:'none', color:'inherit' }} cart={cart}>{page}</Link>        
-                  </Typography>
-                </MenuItem>
-              ))}
+              >
+                
+              {pages.map((page, index) => (
+                  <Button
+                  key={index}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                  > 
+                  <Link
+                  properties={page.properties}
+                  style={{ textDecoration:'none', color:'black' }}
+                  to={`/${page.route}`}
+                  >
+                  {page.name}
+                  </Link>
+                  </Button>
+                  ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -133,19 +120,36 @@ function NavBar(props) {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            THE STORE
           </Typography>
+          
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              > 
-                <Link style={{ textDecoration:'none', color:'inherit' }} to={`/${page}`}>{page}</Link> 
-              </Button>
-            ))}
+          {pages.map((page,index) => (
+            <Button
+              key={index}
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            > 
+              <NavLink className={({ isActive }) => (isActive ? 'active' : '')}
+                properties={page.properties}
+                style={{ color:'inherit' }}
+                to={`/${page.route}`}
+              >
+                {page.name}
+              </NavLink>
+            </Button>
+          ))}
           </Box>
+
+          <Box sx={{ flexGrow: 0 }}>
+          
+          <Button onClick={props.toggleTheme}
+           startIcon={props.theme === true ? <WbSunnyIcon/> :  <NightlightRoundIcon/>}
+            variant="contained">{props.theme === true ? 'Light' : 'Dark'}</Button>
+
+          </Box>
+
+
         </Toolbar>
       </Container>
     </AppBar>

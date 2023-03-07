@@ -13,8 +13,19 @@ img{
   position: fixed;
   top: 50%;
   left: 50%;
-
-
+}
+a{
+  text-decoration: none;
+}
+a.active{
+text-decoration: underline;
+}
+.cta{
+  color: inherit;
+  padding: 10px 50px;
+  background-color: #de3e35;
+  border-radius: 5px;
+  color: white;
 }
 
 @keyframes rotator {

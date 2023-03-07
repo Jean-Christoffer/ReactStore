@@ -1,6 +1,6 @@
 
-import React,{useState, useEffect} from 'react'
-import Nav from './components/NavBar.jsx'
+import {useState} from 'react'
+import NavBar from './components/NavBar.jsx'
 import {BrowserRouter,Route,Routes} from "react-router-dom";
 import About from './components/About.jsx'
 import Cart from './components/Cart.jsx'
@@ -8,9 +8,32 @@ import Products from './components/Products.jsx'
 import Home from './components/Home.jsx'
 import ProductDetails from './components/ProductDetails.jsx'
 import Footer from './components/Footer.jsx'
-import Container from '@mui/material/Container';
+import {Container,Paper} from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+
 function App() {
-const  [cart,setCart] = useState([])
+
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
+  const lightTheme = createTheme({
+    palette: {
+      mode: 'light',
+    },
+  });
+
+  const [theme, setTheme] = useState(false)
+
+  const [cart,setCart] = useState([])
+
+function toggleTheme(){
+  setTheme(!theme)
+}
+
+
 
 function handleAddToCart(newItem){
   const itemExists = cart.find(product => product.id === newItem.id)
@@ -39,18 +62,23 @@ function handleAddToCart(newItem){
 
   return (
     <>
+    
     <BrowserRouter>
-    <Nav cart={cart}/>
-      <Container>
-        <Routes>
-          <Route path='/' element={<Home/>}></Route>
-          <Route path='/products' element={<Products handleAddToCart={handleAddToCart} cart = {cart}/>}></Route>
-          <Route path='/products/:id' element={<ProductDetails handleAddToCart={handleAddToCart} cart={cart}/>}></Route>
-          <Route path='/about' element={<About/>}></Route>
-          <Route path='/cart' element={<Cart cart={cart}/>}></Route>
-        </Routes>
-        <Footer/>
-      </Container>
+      <ThemeProvider theme={theme ? darkTheme : lightTheme }>
+        <Paper sx={{  minHeight:'100vh' }} elevation={0} square >
+          <NavBar toggleTheme={toggleTheme} cart={cart} theme={theme}/>
+            <Container>
+              <Routes>
+                <Route path='/' element={<Home/>}></Route>
+                <Route path='/products' element={<Products handleAddToCart={handleAddToCart} cart = {cart}/>}></Route>
+                <Route path='/products/:id' element={<ProductDetails handleAddToCart={handleAddToCart} cart={cart}/>}></Route>
+                <Route path='/about' element={<About/>}></Route>
+                <Route path='/cart' element={<Cart cart={cart}/>}></Route>
+              </Routes>
+            </Container>
+            <Footer/>
+          </Paper>
+        </ThemeProvider>
       </BrowserRouter>
     </>
   )

@@ -23,7 +23,7 @@ export default function ProductDetails(props){
     return(
     <>
     {isLoading && <Loader/>}
-    <Paper elevation={3} key = {product.id} sx={{ maxWidth: 600, margin:'auto' }}>
+    <Paper elevation={3} key = {product.id} sx={{ maxWidth: 600, margin:'auto', marginTop:20 }}>
 
         <Box padding={1} sx={{  display:'flex', justifyContent:'center', height:200 }}>      
             <img src={product.image} />

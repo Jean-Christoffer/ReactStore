@@ -7,15 +7,20 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem'
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
+import useMediaQuery from '@mui/material/useMediaQuery';
 export default function Products(props){
     const {handleAddToCart, cart} = props
     const [products, setProducts] = useState([])
     const [category, setCategory] = useState('electronics')
     const [isLoading, setIsLoading] = useState(false)
 
+    const mobile = useMediaQuery('(max-width:600px)');
+    const tablet = useMediaQuery('(max-width:800px)');
+
+
+
     function toggleCategory(event){
         setCategory(event.target.value)
-        console.log(category)
     }
 
     useEffect(()=>{
@@ -31,7 +36,7 @@ export default function Products(props){
 
     return(
         <>
-        <Box sx={{ maxWidth: 200, 'margin-top':20 }}>
+        <Box sx={{ maxWidth: 200,marginTop:5 }}>
         <FormControl fullWidth>
          <InputLabel id="category">Category</InputLabel>
         <Select
@@ -48,7 +53,7 @@ export default function Products(props){
         </Select>
         </FormControl>
         </Box>  
-        <Grid2 container  spacing={5}>
+        <Grid2 container  spacing={5} columns={mobile ? 1 : tablet ? 8 : 12} sx={{ marginBottom:1 }}>
             {isLoading && <Loader/>}
             {products && products.map(product => <Product key = {product.id} handleAddToCart={handleAddToCart} details = {product} cart={cart}/>)}
         </Grid2>
