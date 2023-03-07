@@ -91,11 +91,11 @@ function NavBar(props) {
                   <Button
                   key={index}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+                  sx={{ my: 2, color: 'white', display: 'block', padding:'10px' }}
                   > 
                   <Link
                   properties={page.properties}
-                  style={{ textDecoration:'none', color:'black' }}
+                  style={{ textDecoration:'none', color:'black',padding:'10px' }}
                   to={`/${page.route}`}
                   >
                   {page.name}
@@ -132,7 +132,7 @@ function NavBar(props) {
             > 
               <NavLink className={({ isActive }) => (isActive ? 'active' : '')}
                 properties={page.properties}
-                style={{ color:'inherit' }}
+                style={{ color:'inherit',padding:'15px' }}
                 to={`/${page.route}`}
               >
                 {page.name}
